@@ -34,7 +34,7 @@ To install the library by compiling the source code:
 Add the following dependency to your `pom.xml`:
 ```xml
 <dependency>
-    <groupId>com.github.shirobokovvalentin</groupId>
+    <groupId>io.github.shirobokovvalentin</groupId>
     <artifactId>action_dispatcher</artifactId>
     <version>1.2</version>
 </dependency>
@@ -43,7 +43,7 @@ Add the following dependency to your `pom.xml`:
 ### Gradle
 Add the following to your `build.gradle`:
 ```gradle
-implementation 'com.github.shirobokovvalentin:action_dispatcher:1.2'
+implementation 'io.github.shirobokovvalentin:action_dispatcher:1.2'
 ```
 
 ### JitPack
@@ -60,7 +60,7 @@ If the library is not in Maven Central, you can use JitPack. Add the following c
 </repositories>
 
 <dependency>
-    <groupId>com.github.shirobokovvalentin</groupId>
+    <groupId>io.github.shirobokovvalentin</groupId>
     <artifactId>action_dispatcher</artifactId>
     <version>1.2</version>
 </dependency>
@@ -73,7 +73,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.shirobokovvalentin:action_dispatcher:1.0.0'
+    implementation 'io.github.shirobokovvalentin:action_dispatcher:1.0.0'
 }
 ```
 
@@ -84,15 +84,13 @@ dependencies {
 ```java {title="DispatcherClass.java"}
 package com.example;
 
-import com.github.shirobokovvalentin.action_dispatcher.annotations.*;
-
 @Dispatcher("action")
 public class DispatcherClass {
 
-    @Action("greet")
-    public String greet(@RequestParam("name") String name) {
-        return "Hello, " + name + "!";
-    }
+   @Action("greet")
+   public String greet(@RequestParam("name") String name) {
+      return "Hello, " + name + "!";
+   }
 }
 ```
 
@@ -100,7 +98,7 @@ public class DispatcherClass {
 
 ```jsp title="index.jsp"
 <%@ page import="com.example.DispatcherClass" %>
-<%@ page import="com.github.shirobokovvalentin.action_dispatcher.ActionDispatcher" %>
+<%@ page import="io.github.shirobokovvalentin.action_dispatcher.ActionDispatcher" %>
 <%= ActionDispatcher.newInstance(new DispatcherClass()).process(request)%>
 
 ```
